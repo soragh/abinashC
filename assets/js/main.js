@@ -5,7 +5,7 @@
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
-(function() {
+(function () {
   "use strict";
 
   /**
@@ -60,7 +60,7 @@
   /**
    * Mobile nav toggle
    */
-  on('click', '.mobile-nav-toggle', function(e) {
+  on('click', '.mobile-nav-toggle', function (e) {
     select('#navbar').classList.toggle('navbar-mobile')
     this.classList.toggle('bi-list')
     this.classList.toggle('bi-x')
@@ -85,7 +85,7 @@
   /**
    * Mobile nav dropdowns activate
    */
-  on('click', '.navbar .dropdown > a', function(e) {
+  on('click', '.navbar .dropdown > a', function (e) {
     if (select('#navbar').classList.contains('navbar-mobile')) {
       e.preventDefault()
       this.nextElementSibling.classList.toggle('dropdown-active')
@@ -122,4 +122,50 @@
     })
   });
 
+  /**
+   * CountDown setup
+   */
+  let countdownEl = select(".countdown")
+  let countDownDateVal = countdownEl.getAttribute("data-date")
+  if (countDownDateVal) {
+    
+    const toggleButton = () => {
+      if (window.scrollY > 200) {
+        countdownEl.classList.add('btn-primary')
+        countdownEl.classList.remove('btn-outline-white')
+      } else {
+        countdownEl.classList.remove('btn-primary')
+        countdownEl.classList.add('btn-outline-white')
+      }
+    }
+
+    window.addEventListener('load', toggleButton)
+    onscroll(document, toggleButton)
+
+    var countDownDate = new Date(countDownDateVal).getTime();
+    var x = setInterval(function () {
+      var now = new Date().getTime();
+
+      var distance = countDownDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdownNum").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s";
+      countdownEl.classList.remove('inactive')
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdownNum").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+    
+  }
+
+
+  /**
+   * CountDown complete
+   */
 })()

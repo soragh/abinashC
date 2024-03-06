@@ -14,9 +14,15 @@ html {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
-  color: #9fa1a4;
+  /* font-family: "Roboto", sans-serif; */
+  /* color: #9fa1a4; */
   line-height: 1.5;
+}
+
+body {
+  font-family: "Calligraffitti", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 a {
@@ -36,8 +42,11 @@ h4,
 h5,
 h6,
 .font-heading {
-  font-family: "Poppins", sans-serif;
-  color: #000;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Calligraffitti", cursive;
+  /* background: linear-gradient(-45deg, #1391a5, #274685); */
+  /* --webkit-background-clip: text; */
+  color: #274685;
 }
 
 .container {
@@ -98,6 +107,19 @@ section {
   height: 40px;
   border-radius: 50px;
   transition: all 0.4s;
+}
+
+.countdown{
+  position: fixed;
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  left: 10vw;
+  top: 25vh;
+  z-index: 996;
+}
+.countdown.inactive{
+  visibility: hidden;
+  opacity: 0;
 }
 
 .back-to-top i {
