@@ -153,7 +153,7 @@
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById("countdownNum").innerHTML = days + "d " + hours + "h "
+      document.getElementById("countdownNum").innerHTML = " Voting Ends<br>" + days + "d " + hours + "h "
         + minutes + "m " + seconds + "s";
       countdownEl.classList.remove('inactive')
       if (distance < 0) {
