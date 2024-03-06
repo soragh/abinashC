@@ -128,7 +128,7 @@
   let countdownEl = select(".countdown")
   let countDownDateVal = countdownEl.getAttribute("data-date")
   if (countDownDateVal) {
-    
+
     const toggleButton = () => {
       if (window.scrollY > 200) {
         countdownEl.classList.add('btn-primary')
@@ -161,11 +161,65 @@
         document.getElementById("countdownNum").innerHTML = "EXPIRED";
       }
     }, 1000);
-    
+
+  }
+
+  const typed = select('.typed')
+  if (typed) {
+    let typed_strings = typed.getAttribute('data-typed-items')
+    typed_strings = typed_strings.split(',')
+    new Typed('.typed', {
+      strings: typed_strings,
+      loop: true,
+      typeSpeed: 100,
+      backSpeed: 50,
+      backDelay: 2000
+    });
   }
 
 
   /**
-   * CountDown complete
+   * Gallery Slider
    */
+  new Swiper('.gallery-slider', {
+    speed: 400,
+    loop: true,
+    centeredSlides: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false
+    },
+    slidesPerView: 'auto',
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'bullets',
+      clickable: true
+    },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+        spaceBetween: 30
+      },
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      },
+      992: {
+        slidesPerView: 5,
+        spaceBetween: 30
+      },
+      1200: {
+        slidesPerView: 7,
+        spaceBetween: 30
+      }
+    }
+  });
+
+  /**
+   * Initiate gallery lightbox 
+   */
+  const galleryLightbox = GLightbox({
+    selector: '.gallery-lightbox'
+  });
+
 })()
